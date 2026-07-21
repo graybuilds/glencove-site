@@ -235,6 +235,10 @@
     border: 1px solid var(--line);
     padding: 4px 9px;
   }
+  .work-tag.launched { color: #35701f; border-color: #5f9c53; background: rgba(95,156,83,0.14); animation: tag-blink 1.3s ease-in-out infinite; }
+  .work-tag.dev { color: #8a5a0a; border-color: #c79025; background: rgba(199,144,37,0.15); }
+  .work-tag.origin { color: #3c3489; border-color: #7f77dd; background: rgba(83,74,183,0.12); }
+  @keyframes tag-blink { 50% { opacity: 0.35; } }
   .work-body p { color: var(--ink-muted); margin-top: 14px; font-size: 1rem; }
   .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
   .stack span { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted); border-bottom: 1px solid var(--line); padding-bottom: 2px; }
@@ -333,6 +337,7 @@
     .reveal { opacity: 1; transform: none; transition: none; }
     * { transition: none !important; }
     .caret, .status-dot::after { animation: none !important; }
+    .work-tag.launched { animation: none !important; }
   }
 </style>
 </head>
@@ -432,7 +437,7 @@
       <div class="work-body">
         <div class="work-title-row">
           <h3>Merit.fyi</h3>
-          <span class="work-tag">Launched</span>
+          <span class="work-tag launched">Launched</span>
         </div>
         <p>A tool for capturing, evaluating, and prioritizing startup ideas before they get lost. Built and launched in Claude as a simple web experience, it lets you submit an idea in under two minutes and receive a structured, data-backed diagnosis straight to your inbox. A scoring-history model tracks how ideas evolve over time — so rankings reflect real thinking, not just first impressions.</p>
         <img src="merit.png" alt="Merit.fyi landing page — grades a startup idea live across seven weighted dimensions" class="work-shot" />
@@ -448,7 +453,7 @@
       <div class="work-body">
         <div class="work-title-row">
           <h3>Clusi Control</h3>
-          <span class="work-tag">In development</span>
+          <span class="work-tag dev">In development</span>
         </div>
         <p>Home and property service owners lose deals to scattered leads and slow follow-up. Clusi Control is a single command center — lead gen, pipeline, CRM, estimates, and finances in one place — with an AI layer that writes the daily brief, drafts follow-ups, and runs a post-mortem on every lost lead. A config system lets it adapt to each type of business without a full rebuild.</p>
         <img src="clusi-control.png" alt="Clusi Control dashboard — pipeline value, action-required leads, revenue, and recent activity" class="work-shot" />
@@ -464,7 +469,7 @@
       <div class="work-body">
         <div class="work-title-row">
           <h3>Coastal Coat</h3>
-          <span class="work-tag">Origin of Clusi Control</span>
+          <span class="work-tag origin">Origin of Clusi Control</span>
         </div>
         <p>An early-stage residential painting company I co-founded. To find work for it, I built and deployed a lead-generation tool that researches a market, scores prospects by fit against real signals like permits and property records, and pushes the best ones into a CRM-ready pipeline. Watching it surface genuine high-value jobs is what made the bigger opportunity obvious — every home-service business needs this — so I generalized that tool into Clusi Control.</p>
         <img src="Coastal Coat Mission Control.png" alt="Coastal Coat lead-intelligence tool — research funnel, prospect scoring by fit, and source evidence by market" class="work-shot" />
@@ -472,7 +477,7 @@
           <span>Lead generation</span><span>AI research</span><span>Home services</span>
         </div>
       </div>
-      <a class="work-link" href="#contact">The story →</a>
+      <a class="work-link" href="#about">The story →</a>
     </div>
   </div>
 </section>
@@ -533,9 +538,13 @@
       <a href="Gray-Hardee-Resume.pdf" download><span class="arrow">↳</span> Download résumé</a>
     </div>
 
-    <!-- To switch to Formspree later: add action="https://formspree.io/f/YOUR_ID" method="POST"
-         to the <form> tag and delete the contact-form submit handler in the script below. -->
+    <!-- Contact form posts to Web3Forms (no redirect, no email app). Paste your free
+         access key into the access_key value below. Get one at web3forms.com. -->
     <form id="contact-form" class="contact-form reveal">
+      <input type="hidden" name="access_key" value="b08f5521-0871-4e87-860e-b6e0cb7cfb67" />
+      <input type="hidden" name="subject" value="New message from theglencovegroup.com" />
+      <input type="hidden" name="from_name" value="The Glencove Group website" />
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
       <div class="form-row">
         <div class="form-field">
           <label for="cf-name">Name</label>
@@ -547,11 +556,11 @@
         </div>
       </div>
       <div class="form-field">
-        <label for="cf-message">What are you looking to build, or is this about a role?</label>
+        <label for="cf-message">What can I help with?</label>
         <textarea id="cf-message" name="message" rows="4" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Send message</button>
-      <p class="form-note">This also works for booking a Clusi Control walkthrough — just say so in the message.</p>
+      <button type="submit" class="btn btn-primary">Send</button>
+      <p class="form-note" id="form-note">Just leave your info — I'll reach out personally, usually within a day or two.</p>
     </form>
   </div>
 </section>
@@ -588,15 +597,27 @@
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
   var cform = document.getElementById("contact-form");
-  if (cform && !cform.getAttribute("action")) {
+  if (cform) {
     cform.addEventListener("submit", function (e) {
       e.preventDefault();
-      var name = document.getElementById("cf-name").value;
-      var email = document.getElementById("cf-email").value;
-      var message = document.getElementById("cf-message").value;
-      var subject = encodeURIComponent("Inquiry via theglencovegroup.com");
-      var body = encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message);
-      window.location.href = "mailto:gray@theglencovegroup.com?subject=" + subject + "&body=" + body;
+      var note = document.getElementById("form-note");
+      var btn = cform.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Sending…";
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(cform)
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        if (data && data.success) {
+          cform.innerHTML = '<p class="form-note" style="font-size:1rem;color:var(--ink);">Thanks — your message is in. I\'ll get back to you personally.</p>';
+        } else {
+          btn.disabled = false; btn.textContent = "Send";
+          if (note) { note.textContent = "Something went wrong — you can email me directly at gray@theglencovegroup.com."; note.style.color = "var(--brass-deep)"; }
+        }
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = "Send";
+        if (note) { note.textContent = "Something went wrong — you can email me directly at gray@theglencovegroup.com."; note.style.color = "var(--brass-deep)"; }
+      });
     });
   }
 </script>
