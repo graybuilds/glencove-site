@@ -172,7 +172,12 @@
   .tb-row:last-child { border-bottom: none; }
   .tb-key { color: var(--ink-muted); padding: 11px 16px; border-right: 1px solid var(--line-soft); }
   .tb-val { padding: 11px 16px; }
-  .tb-val.live { color: var(--brass-deep); }
+  .tb-val.live { color: #5f7d4f; display: flex; align-items: center; gap: 9px; }
+  .status-dot { position: relative; width: 9px; height: 9px; border-radius: 50%; background: #5f9c53; flex: none; }
+  .status-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid #5f9c53; animation: pulse-ring 2s ease-out infinite; }
+  @keyframes pulse-ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
+  .caret { display: inline-block; width: 5px; height: 0.82em; background: var(--brass); margin-left: 8px; transform: translateY(3px); animation: caret-blink 1.1s steps(1) infinite; }
+  @keyframes caret-blink { 50% { opacity: 0; } }
 
   /* ---------- credibility strip ---------- */
   .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -327,6 +332,7 @@
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
     * { transition: none !important; }
+    .caret, .status-dot::after { animation: none !important; }
   }
 </style>
 </head>
@@ -349,7 +355,7 @@
   <div class="wrap hero-grid">
     <div class="reveal">
       <span class="eyebrow">AI Solutions Architect</span>
-      <h1>I diagnose business problems and build the <em>AI systems</em> that fix them.</h1>
+      <h1>I diagnose business problems and build the <em>AI systems</em> that fix them.<span class="caret" aria-hidden="true"></span></h1>
       <p class="hero-sub">Part strategist, part builder. I sit with the people who own the problem, design the system that solves it, and ship it with modern AI tooling.</p>
       <div class="cta-row">
         <a href="#work" class="btn btn-primary">View selected work</a>
@@ -362,7 +368,7 @@
         <div class="tb-row"><div class="tb-key">Based in</div><div class="tb-val">Charlotte, NC</div></div>
         <div class="tb-row"><div class="tb-key">Focus</div><div class="tb-val">Applied AI &amp; automation</div></div>
         <div class="tb-row"><div class="tb-key">Toolkit</div><div class="tb-val">Claude · Base44 · React</div></div>
-        <div class="tb-row"><div class="tb-key">Status</div><div class="tb-val live">Open to AI roles</div></div>
+        <div class="tb-row"><div class="tb-key">Status</div><div class="tb-val live"><span class="status-dot" aria-hidden="true"></span>Open to AI roles</div></div>
       </div>
     </div>
   </div>
