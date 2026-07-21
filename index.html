@@ -37,7 +37,9 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  img { max-width: 100%; height: auto; }
 
   body {
     background: var(--paper);
@@ -309,6 +311,14 @@
     .work-item { grid-template-columns: 1fr; gap: 16px; }
     .work-index { font-size: 1.6rem; }
     .work-link { border-bottom: none; padding-bottom: 0; }
+    .process { grid-template-columns: 1fr; gap: 24px; }
+    .strip-inner { flex-direction: column; gap: 10px; padding: 22px 0; }
+    .strip-inner .dot { display: none; }
+    .contact-links { gap: 12px 22px; }
+    .contact-form { margin-top: 36px; }
+    section { padding: 60px 0; }
+    .hero { padding: 60px 0 52px; }
+    .hero-sub { max-width: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
