@@ -262,6 +262,9 @@
   .work-link:hover { color: var(--brass-deep); }
   .work-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
   .work-shot { width: 100%; display: block; border: 1px solid var(--line); margin-top: 22px; background: var(--paper-lift); }
+  .work-shot-link { display: block; }
+  .work-shot-link .work-shot { transition: border-color 0.2s ease, opacity 0.2s ease; }
+  .work-shot-link:hover .work-shot { border-color: var(--brass); opacity: 0.92; }
 
   /* ---------- process ---------- */
   .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; }
@@ -449,12 +452,12 @@
           <span class="work-tag launched">Launched</span>
         </div>
         <p>A tool for capturing, evaluating, and prioritizing startup ideas before they get lost. Built and launched in Claude as a simple web experience, it lets you submit an idea in under two minutes and receive a structured, data-backed diagnosis straight to your inbox. A scoring-history model tracks how ideas evolve over time — so rankings reflect real thinking, not just first impressions.</p>
-        <img src="merit.png" alt="Merit.fyi landing page — grades a startup idea live across seven weighted dimensions" class="work-shot" />
+        <a class="work-shot-link" href="https://merit.fyi" target="_blank" rel="noopener"><img src="merit.png" alt="Merit.fyi landing page — grades a startup idea live across seven weighted dimensions" class="work-shot" /></a>
         <div class="stack">
           <span>Claude</span><span>Web app</span><span>Email delivery</span><span>Scoring model</span>
         </div>
       </div>
-      <a class="work-link" href="https://merit.fyi" target="_blank" rel="noopener">Visit →</a>
+      <a class="work-link" href="https://merit.fyi" target="_blank" rel="noopener">Grade your idea →</a>
     </div>
 
     <div class="work-item reveal">
@@ -465,7 +468,7 @@
           <span class="work-tag dev">In development</span>
         </div>
         <p>Home and property service owners lose deals to scattered leads and slow follow-up. Clusi Control is a single command center — lead gen, pipeline, CRM, estimates, and finances in one place — with an AI layer that writes the daily brief, drafts follow-ups, and runs a post-mortem on every lost lead. A config system lets it adapt to each type of business without a full rebuild.</p>
-        <img src="clusi-control.png" alt="Clusi Control dashboard — pipeline value, action-required leads, revenue, and recent activity" class="work-shot" />
+        <a class="work-shot-link" href="https://clusi-control-demo.vercel.app" target="_blank" rel="noopener"><img src="clusi-control.png" alt="Clusi Control dashboard — pipeline value, action-required leads, revenue, and recent activity" class="work-shot" /></a>
         <div class="stack">
           <span>React</span><span>Vite</span><span>Express</span><span>SQLite</span><span>LLM layer</span>
         </div>
