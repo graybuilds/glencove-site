@@ -47,30 +47,16 @@
     --tag-origin:#a99ff0; --tag-origin-bd:#7f77dd; --tag-origin-bg:rgba(127,119,221,0.18);
     --status-dot:#74d07e;
   }
-  [data-theme="opsdeck"] {
-    --paper:#0A0E12; --paper-lift:#0F151A; --ink:#E6EDF0; --ink-muted:#8798A0;
-    --brass:#35E0D0; --brass-deep:#6DF0E2; --line:rgba(53,224,208,0.16); --line-soft:rgba(53,224,208,0.08);
-    --tag-launch:#46E06A; --tag-launch-bd:#46E06A; --tag-launch-bg:rgba(70,224,106,0.14);
-    --tag-dev:#F5A623; --tag-dev-bd:#F5A623; --tag-dev-bg:rgba(245,166,35,0.14);
-    --tag-origin:#b39cff; --tag-origin-bd:#b39cff; --tag-origin-bg:rgba(179,156,255,0.14);
-    --status-dot:#46E06A;
+  [data-theme="matrix"] {
+    --paper:#000000; --paper-lift:#050A06; --ink:#C8FFD4; --ink-muted:#5FA873;
+    --brass:#00FF66; --brass-deep:#5BFF9B; --line:rgba(0,255,102,0.22); --line-soft:rgba(0,255,102,0.10);
+    --tag-launch:#00FF66; --tag-launch-bd:#00FF66; --tag-launch-bg:rgba(0,255,102,0.14);
+    --tag-dev:#B6FF3D; --tag-dev-bd:#B6FF3D; --tag-dev-bg:rgba(182,255,61,0.12);
+    --tag-origin:#57FFD6; --tag-origin-bd:#57FFD6; --tag-origin-bg:rgba(87,255,214,0.12);
+    --status-dot:#00FF66;
   }
-  [data-theme="blueprint"] {
-    --paper:#0E1B33; --paper-lift:#152544; --ink:#E7ECF7; --ink-muted:#93A2C4;
-    --brass:#6EA8FF; --brass-deep:#9CC4FF; --line:rgba(110,168,255,0.20); --line-soft:rgba(110,168,255,0.10);
-    --tag-launch:#63d091; --tag-launch-bd:#63d091; --tag-launch-bg:rgba(99,208,145,0.14);
-    --tag-dev:#ffc861; --tag-dev-bd:#ffc861; --tag-dev-bg:rgba(255,200,97,0.14);
-    --tag-origin:#b6a6ff; --tag-origin-bd:#b6a6ff; --tag-origin-bg:rgba(182,166,255,0.14);
-    --status-dot:#63d091;
-  }
-  [data-theme="newsprint"] {
-    --paper:#FFFFFF; --paper-lift:#F3F3F1; --ink:#111111; --ink-muted:#565656;
-    --brass:#141414; --brass-deep:#000000; --line:rgba(0,0,0,0.22); --line-soft:rgba(0,0,0,0.10);
-    --tag-launch:#1f6b2f; --tag-launch-bd:#1f6b2f; --tag-launch-bg:rgba(31,107,47,0.10);
-    --tag-dev:#8a5a0a; --tag-dev-bd:#8a5a0a; --tag-dev-bg:rgba(138,90,10,0.10);
-    --tag-origin:#3c3489; --tag-origin-bd:#3c3489; --tag-origin-bg:rgba(60,52,137,0.10);
-    --status-dot:#1f6b2f;
-  }
+  [data-theme="matrix"] body { text-shadow: 0 0 12px rgba(0,255,102,0.18); }
+  [data-theme="matrix"] .hero h1 em, [data-theme="matrix"] .eyebrow { text-shadow: 0 0 16px rgba(0,255,102,0.45); }
   [data-theme="glass"] {
     --paper:#E7EEF4; --paper-lift:rgba(255,255,255,0.55); --ink:#1B2733; --ink-muted:#5A6B7A;
     --brass:#4F86B8; --brass-deep:#356E9C; --line:rgba(27,39,51,0.14); --line-soft:rgba(27,39,51,0.07);
@@ -82,29 +68,38 @@
   [data-theme="glass"] .titleblock,
   [data-theme="glass"] .contact-form input,
   [data-theme="glass"] .contact-form textarea,
-  [data-theme="glass"] .theme-menu { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  [data-theme="silver"] {
-    --paper:#E4E7EA; --paper-lift:#F1F2F4; --ink:#22262A; --ink-muted:#606870;
-    --brass:#6B7480; --brass-deep:#4C545C; --line:rgba(34,38,42,0.16); --line-soft:rgba(34,38,42,0.08);
-    --tag-launch:#2f7a45; --tag-launch-bd:#57986c; --tag-launch-bg:rgba(47,122,69,0.12);
-    --tag-dev:#8a5f12; --tag-dev-bd:#b5892f; --tag-dev-bg:rgba(181,137,47,0.14);
-    --tag-origin:#463d9c; --tag-origin-bd:#7168c4; --tag-origin-bg:rgba(70,61,156,0.12);
-    --status-dot:#2f7a45;
-  }
+  [data-theme="glass"] .theme-pod { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 
   body, .nav, .strip, section, .titleblock, .tb-key, .tb-row, .work-tag, .form-field input, .form-field textarea, .contact { transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease; }
 
-  .nav-right { display: flex; align-items: center; gap: 22px; }
-  .theme-switch { position: relative; }
-  .theme-btn { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.02em; color: var(--ink-muted); background: transparent; border: 1px solid var(--line); padding: 7px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s ease, border-color 0.2s ease; }
-  .theme-btn:hover { color: var(--ink); border-color: var(--brass); }
-  .theme-swatch { width: 11px; height: 11px; border-radius: 50%; background: var(--brass); border: 1px solid var(--line-soft); display: inline-block; }
-  .theme-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 184px; background: var(--paper-lift); border: 1px solid var(--line); padding: 6px; z-index: 60; }
-  .theme-menu[hidden] { display: none; }
-  .theme-menu button { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; font-family: var(--mono); font-size: 0.8rem; color: var(--ink); background: transparent; border: 0; padding: 9px 10px; cursor: pointer; }
-  .theme-menu button:hover { background: var(--paper); }
-  .theme-menu button[aria-current="true"] { color: var(--brass); }
-  .theme-menu .sw { width: 13px; height: 13px; border-radius: 50%; border: 1px solid var(--line); flex: none; }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .theme-switch { position: relative; display: flex; align-items: center; gap: 10px; }
+  .theme-btn { background: transparent; border: 1px solid var(--line); padding: 7px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 0; color: var(--ink-muted); transition: color 0.2s ease, border-color 0.2s ease; }
+  .theme-btn:hover { color: var(--brass); border-color: var(--brass); }
+  .theme-btn svg { display: block; }
+
+  .theme-pod {
+    position: relative; display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px; border: 1px solid var(--line); background: var(--paper-lift);
+    max-width: 0; opacity: 0; overflow: hidden; padding-left: 0; padding-right: 0; border-width: 0;
+    transition: max-width 0.42s cubic-bezier(.4,0,.2,1), opacity 0.28s ease, padding 0.42s ease;
+  }
+  .theme-switch.open .theme-pod { max-width: 190px; opacity: 1; padding-left: 12px; padding-right: 12px; border-width: 1px; }
+
+  .theme-pod .ring {
+    position: absolute; top: 50%; left: 12px; width: 22px; height: 22px; margin-top: -11px;
+    border: 1px solid var(--brass); border-radius: 50%; pointer-events: none;
+    transform: translateX(calc(var(--i, 0) * 28px));
+    transition: transform 0.42s cubic-bezier(.34,1.4,.5,1), border-color 0.42s ease;
+  }
+  .theme-dot {
+    position: relative; z-index: 1; width: 16px; height: 16px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18); cursor: pointer; padding: 0;
+    opacity: 0.42; transform: scale(0.86);
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .theme-dot:hover { opacity: 0.85; transform: scale(1); }
+  .theme-dot[aria-current="true"] { opacity: 1; transform: scale(1); box-shadow: 0 0 10px 1px currentColor; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -438,15 +433,18 @@
         <a href="#contact">Contact</a>
       </div>
       <div class="theme-switch">
-        <button class="theme-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change theme"><span class="theme-swatch"></span>Theme</button>
-        <div class="theme-menu" role="menu" hidden>
-          <button data-theme-set="paper" role="menuitem"><span class="sw" style="background:#9C7A34"></span>Paper</button>
-          <button data-theme-set="night" role="menuitem"><span class="sw" style="background:#C99B45"></span>Night</button>
-          <button data-theme-set="opsdeck" role="menuitem"><span class="sw" style="background:#35E0D0"></span>Ops Deck</button>
-          <button data-theme-set="blueprint" role="menuitem"><span class="sw" style="background:#6EA8FF"></span>Blueprint</button>
-          <button data-theme-set="newsprint" role="menuitem"><span class="sw" style="background:#141414"></span>Newsprint</button>
-          <button data-theme-set="glass" role="menuitem"><span class="sw" style="background:#4F86B8"></span>Liquid Glass</button>
-          <button data-theme-set="silver" role="menuitem"><span class="sw" style="background:#8A9299"></span>Metallic Silver</button>
+        <button class="theme-btn" aria-expanded="false" aria-label="Change theme" title="Change theme">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M8 1.8a6.2 6.2 0 0 0 0 12.4z" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="theme-pod" role="group" aria-label="Theme options">
+          <span class="ring" aria-hidden="true"></span>
+          <button class="theme-dot" data-theme-set="paper" style="background:#E7DFC9;color:#9C7A34" title="Paper" aria-label="Paper theme"></button>
+          <button class="theme-dot" data-theme-set="night" style="background:#C99B45;color:#C99B45" title="Night" aria-label="Night theme"></button>
+          <button class="theme-dot" data-theme-set="glass" style="background:#8FC3E8;color:#4F86B8" title="Liquid Glass" aria-label="Liquid Glass theme"></button>
+          <button class="theme-dot" data-theme-set="matrix" style="background:#00FF66;color:#00FF66" title="Matrix" aria-label="Matrix theme"></button>
         </div>
       </div>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
@@ -723,23 +721,28 @@
     var sw = document.querySelector(".theme-switch");
     if (!sw) return;
     var btn = sw.querySelector(".theme-btn");
-    var menu = sw.querySelector(".theme-menu");
-    var opts = menu.querySelectorAll("button[data-theme-set]");
+    var pod = sw.querySelector(".theme-pod");
+    var ring = sw.querySelector(".ring");
+    var dots = Array.prototype.slice.call(sw.querySelectorAll(".theme-dot"));
     function current() { return document.documentElement.getAttribute("data-theme") || "paper"; }
     function mark() {
       var c = current();
-      opts.forEach(function (o) { o.setAttribute("aria-current", o.getAttribute("data-theme-set") === c ? "true" : "false"); });
+      dots.forEach(function (d, i) {
+        var on = d.getAttribute("data-theme-set") === c;
+        d.setAttribute("aria-current", on ? "true" : "false");
+        if (on && ring) ring.style.setProperty("--i", i);
+      });
     }
-    function open(state) { menu.hidden = !state; btn.setAttribute("aria-expanded", state ? "true" : "false"); }
-    btn.addEventListener("click", function (e) { e.stopPropagation(); open(menu.hidden); });
-    menu.addEventListener("click", function (e) { e.stopPropagation(); });
-    opts.forEach(function (o) {
-      o.addEventListener("click", function () {
-        var t = o.getAttribute("data-theme-set");
+    function open(state) { sw.classList.toggle("open", state); btn.setAttribute("aria-expanded", state ? "true" : "false"); }
+    btn.addEventListener("click", function (e) { e.stopPropagation(); open(!sw.classList.contains("open")); });
+    pod.addEventListener("click", function (e) { e.stopPropagation(); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () {
+        var t = d.getAttribute("data-theme-set");
         if (t === "paper") { document.documentElement.removeAttribute("data-theme"); }
         else { document.documentElement.setAttribute("data-theme", t); }
         try { localStorage.setItem("gc-theme", t); } catch (e) {}
-        mark(); open(false);
+        mark();
       });
     });
     document.addEventListener("click", function () { open(false); });
